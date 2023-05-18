@@ -1,12 +1,20 @@
 import { render, screen, within } from "@testing-library/react";
 import UserList from "./UserList";
 
-it("User list is rendered and find the number of rows", () => {
+function renderComponent() {
   const users = [
     { name: "mohit", email: "mohit@gmail.com" },
     { name: "mihir", email: "mihir@gmail.com" },
   ];
   render(<UserList users={users} />);
+
+  return {
+    users,
+  };
+}
+
+it("User list is rendered and find the number of rows", () => {
+  renderComponent();
 
   // find rows table
   // screen.logTestingPlaygroundURL();
