@@ -23,7 +23,13 @@ test("user has entered value and submitted", () => {
   render(<UserForm addUsers={mock} />);
 
   // manipulate the component or find an element in it
-  const [nameInput, emailInput] = screen.getAllByRole("textbox");
+
+  const nameInput = screen.getByRole("textbox", {
+    name: /name/i,
+  });
+  const emailInput = screen.getByRole("textbox", {
+    name: /email/i,
+  });
 
   userEvent.click(nameInput);
   userEvent.keyboard("mohit");
